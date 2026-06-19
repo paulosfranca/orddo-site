@@ -14,13 +14,21 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <header class="site-header">
+    <header class="site-header" data-header>
       <nav class="nav" aria-label="Navegação principal">
         <a class="brand" href="index.html" aria-label="OrddO, início">
           <span class="brand-mark" aria-hidden="true">O</span>
           <span class="brand-name">OrddO</span>
         </a>
-        <div class="nav-links">
+
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" data-nav-toggle>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span class="sr-only">Abrir menu</span>
+        </button>
+
+        <div class="nav-links" id="menu-principal" data-nav-menu>
           <a href="index.html#como-funciona">Como funciona</a>
           <a href="index.html#advogados">Para advogados</a>
           <a href="index.html#analise">Análise gratuita</a>
@@ -122,5 +130,6 @@
         </div>
       </div>
     </footer>
+    <script src="script.js"></script>
   </body>
 </html>
