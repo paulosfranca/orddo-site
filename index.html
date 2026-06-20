@@ -287,7 +287,7 @@
               </div>
               <div>
                 <label for="telefone">Telefone</label>
-                <input id="telefone" name="telefone" type="tel" autocomplete="tel" required>
+                <input id="telefone" name="telefone" type="tel" autocomplete="tel" placeholder="(11) 99999-9999" required>
               </div>
             </div>
 
@@ -304,7 +304,7 @@
             <div class="form-row two-columns">
               <div>
                 <label for="processo">Número do processo</label>
-                <input id="processo" name="processo" type="text" inputmode="numeric" placeholder="0000000-00.0000.0.00.0000" required>
+                <input id="processo" name="processo" type="text" inputmode="numeric" pattern="\d{7}-\d{2}\.\d{4}\.\d\.\d{2}\.\d{4}" placeholder="0000000-00.0000.0.00.0000" required>
               </div>
               <div>
                 <label for="tribunal">Tribunal / estado</label>

@@ -53,6 +53,39 @@ function formChecked(formData, key) {
   return formData.get(key) === "on";
 }
 
+function onlyDigits(value) {
+  return String(value || "").replace(/\D/g, "");
+}
+
+function isValidEmail(value) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(value || "").trim());
+}
+
+function isValidBrazilianPhone(value) {
+  const digits = onlyDigits(value);
+  return digits.length === 10 || digits.length === 11;
+}
+
+function isValidCnj(value) {
+  return /^\d{7}-\d{2}\.\d{4}\.\d\.\d{2}\.\d{4}$/.test(String(value || "").trim());
+}
+
+function validatePayload(payload) {
+  if (!isValidEmail(payload.email)) {
+    return "Informe um e-mail válido.";
+  }
+
+  if (!isValidBrazilianPhone(payload.telefone)) {
+    return "Informe um telefone válido com DDD.";
+  }
+
+  if (!isValidCnj(payload.numero_cnj)) {
+    return "Informe o número do processo no formato 0000000-00.0000.0.00.0000.";
+  }
+
+  return "";
+}
+
 function buildMailtoUrl(payload) {
   const subject = encodeURIComponent(`Análise inicial OrddO - ${payload.numero_cnj}`);
   const body = encodeURIComponent(
@@ -125,6 +158,13 @@ leadForm?.addEventListener("submit", async (event) => {
     origem: "inbound",
     status: "novo",
   };
+
+  const validationError = validatePayload(payload);
+  if (validationError) {
+    feedback.textContent = validationError;
+    feedback.classList.add("is-error");
+    return;
+  }
 
   const endpoint = leadForm.dataset.endpoint?.trim();
 

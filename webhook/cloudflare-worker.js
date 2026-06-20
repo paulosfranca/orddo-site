@@ -13,6 +13,33 @@ function required(value) {
   return typeof value === "string" && value.trim().length > 0;
 }
 
+function onlyDigits(value) {
+  return String(value || "").replace(/\D/g, "");
+}
+
+function isValidEmail(value) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(value || "").trim());
+}
+
+function isValidBrazilianPhone(value) {
+  const digits = onlyDigits(value);
+  return digits.length === 10 || digits.length === 11;
+}
+
+function isValidCnj(value) {
+  return /^\d{7}-\d{2}\.\d{4}\.\d\.\d{2}\.\d{4}$/.test(String(value || "").trim());
+}
+
+function validatePayload(payload) {
+  if (!required(payload.nome)) return "Missing name";
+  if (!isValidEmail(payload.email)) return "Invalid email";
+  if (!isValidBrazilianPhone(payload.telefone)) return "Invalid phone";
+  if (!isValidCnj(payload.numero_cnj)) return "Invalid CNJ";
+  if (!payload.consentimento_contato) return "Missing contact consent";
+  if (!payload.aceite_privacidade) return "Missing privacy acceptance";
+  return "";
+}
+
 function normalizePerfil(value) {
   const perfil = String(value || "").trim();
   if (perfil === "Titular do crédito") return "credor";
@@ -102,15 +129,9 @@ export default {
       return Response.json({ error: "Invalid JSON" }, { status: 400, headers });
     }
 
-    if (
-      !required(payload.nome) ||
-      !required(payload.email) ||
-      !required(payload.telefone) ||
-      !required(payload.numero_cnj) ||
-      !payload.consentimento_contato ||
-      !payload.aceite_privacidade
-    ) {
-      return Response.json({ error: "Missing required fields" }, { status: 400, headers });
+    const validationError = validatePayload(payload);
+    if (validationError) {
+      return Response.json({ error: validationError }, { status: 400, headers });
     }
 
     try {
