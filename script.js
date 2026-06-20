@@ -49,7 +49,57 @@ function formValue(formData, key) {
   return String(formData.get(key) || "").trim();
 }
 
-leadForm?.addEventListener("submit", (event) => {
+function formChecked(formData, key) {
+  return formData.get(key) === "on";
+}
+
+function buildMailtoUrl(payload) {
+  const subject = encodeURIComponent(`Análise inicial OrddO - ${payload.numero_cnj}`);
+  const body = encodeURIComponent(
+    [
+      "Olá, OrddO.",
+      "",
+      "Gostaria de iniciar uma análise inicial de elegibilidade.",
+      "",
+      `Nome: ${payload.nome}`,
+      `E-mail: ${payload.email}`,
+      `Telefone: ${payload.telefone}`,
+      `Perfil: ${payload.perfil}`,
+      `Número do processo: ${payload.numero_cnj}`,
+      `Tribunal/estado: ${payload.tribunal}`,
+      `Advogado: ${payload.advogado_informado || "Não informado"}`,
+      `Valor aproximado: ${payload.valor_informado || "Não informado"}`,
+      "",
+      "Declaro que autorizei contato para esta análise inicial.",
+    ].join("\n")
+  );
+
+  return `mailto:contato@orddo.com.br?subject=${subject}&body=${body}`;
+}
+
+function setFormLoading(isLoading) {
+  const submit = leadForm?.querySelector(".form-submit");
+  if (submit instanceof HTMLButtonElement) {
+    submit.disabled = isLoading;
+    submit.textContent = isLoading ? "Enviando..." : "Iniciar análise gratuita";
+  }
+}
+
+async function sendLead(endpoint, payload) {
+  const response = await fetch(endpoint, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
+
+  if (!response.ok) {
+    throw new Error(`Falha no envio: ${response.status}`);
+  }
+
+  return response;
+}
+
+leadForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   if (!leadForm.checkValidity()) {
@@ -65,35 +115,44 @@ leadForm?.addEventListener("submit", (event) => {
     email: formValue(data, "email"),
     telefone: formValue(data, "telefone"),
     perfil: formValue(data, "perfil"),
-    processo: formValue(data, "processo"),
+    numero_cnj: formValue(data, "processo"),
     tribunal: formValue(data, "tribunal"),
-    advogado: formValue(data, "advogado") || "Não informado",
-    valor: formValue(data, "valor") || "Não informado",
+    advogado_informado: formValue(data, "advogado"),
+    valor_informado: formValue(data, "valor"),
+    consentimento_contato: formChecked(data, "contato"),
+    aceite_privacidade: formChecked(data, "privacidade"),
+    canal: "site",
+    origem: "inbound",
+    status: "novo",
   };
 
-  const subject = encodeURIComponent(`Análise inicial OrddO - ${payload.processo}`);
-  const body = encodeURIComponent(
-    [
-      "Olá, OrddO.",
-      "",
-      "Gostaria de iniciar uma análise inicial de elegibilidade.",
-      "",
-      `Nome: ${payload.nome}`,
-      `E-mail: ${payload.email}`,
-      `Telefone: ${payload.telefone}`,
-      `Perfil: ${payload.perfil}`,
-      `Número do processo: ${payload.processo}`,
-      `Tribunal/estado: ${payload.tribunal}`,
-      `Advogado: ${payload.advogado}`,
-      `Valor aproximado: ${payload.valor}`,
-      "",
-      "Declaro que autorizei contato para esta análise inicial.",
-    ].join("\n")
-  );
+  const endpoint = leadForm.dataset.endpoint?.trim();
 
-  feedback.textContent =
-    "Perfeito. Abrindo o envio por e-mail com os dados informados.";
-  feedback.classList.remove("is-error");
+  if (!endpoint) {
+    feedback.textContent =
+      "Perfeito. Abrindo o envio por e-mail com os dados informados.";
+    feedback.classList.remove("is-error");
+    window.location.href = buildMailtoUrl(payload);
+    return;
+  }
 
-  window.location.href = `mailto:contato@orddo.com.br?subject=${subject}&body=${body}`;
+  try {
+    setFormLoading(true);
+    feedback.textContent = "Enviando seus dados para análise inicial...";
+    feedback.classList.remove("is-error");
+
+    await sendLead(endpoint, payload);
+
+    feedback.textContent =
+      "Recebemos sua solicitação. Nossa equipe fará a triagem inicial e retornará pelos contatos informados.";
+    feedback.classList.remove("is-error");
+    leadForm.reset();
+  } catch (error) {
+    feedback.textContent =
+      "Não conseguimos concluir o envio automático. Vamos abrir o e-mail com os dados preenchidos.";
+    feedback.classList.add("is-error");
+    window.location.href = buildMailtoUrl(payload);
+  } finally {
+    setFormLoading(false);
+  }
 });
