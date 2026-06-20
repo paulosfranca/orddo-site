@@ -1,0 +1,5 @@
+name = "orddo-crm-inbound"
+main = "webhook/cloudflare-worker.js"
+compatibility_date = "2026-06-20"
+workers_dev = true
+preview_urls = false
