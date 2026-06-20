@@ -86,6 +86,50 @@ function validatePayload(payload) {
   return "";
 }
 
+function formatPhone(value) {
+  const digits = onlyDigits(value).slice(0, 11);
+
+  if (digits.length <= 2) {
+    return digits;
+  }
+
+  if (digits.length <= 6) {
+    return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+  }
+
+  if (digits.length <= 10) {
+    return `(${digits.slice(0, 2)}) ${digits.slice(2, 6)}-${digits.slice(6)}`;
+  }
+
+  return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
+}
+
+function formatCnj(value) {
+  const digits = onlyDigits(value).slice(0, 20);
+  const parts = [
+    digits.slice(0, 7),
+    digits.slice(7, 9),
+    digits.slice(9, 13),
+    digits.slice(13, 14),
+    digits.slice(14, 16),
+    digits.slice(16, 20),
+  ];
+
+  let formatted = parts[0];
+  if (parts[1]) formatted += `-${parts[1]}`;
+  if (parts[2]) formatted += `.${parts[2]}`;
+  if (parts[3]) formatted += `.${parts[3]}`;
+  if (parts[4]) formatted += `.${parts[4]}`;
+  if (parts[5]) formatted += `.${parts[5]}`;
+  return formatted;
+}
+
+function applyInputMask(input, formatter) {
+  input?.addEventListener("input", () => {
+    input.value = formatter(input.value);
+  });
+}
+
 function buildMailtoUrl(payload) {
   const subject = encodeURIComponent(`Análise inicial OrddO - ${payload.numero_cnj}`);
   const body = encodeURIComponent(
@@ -131,6 +175,9 @@ async function sendLead(endpoint, payload) {
 
   return response;
 }
+
+applyInputMask(document.querySelector("#telefone"), formatPhone);
+applyInputMask(document.querySelector("#processo"), formatCnj);
 
 leadForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
