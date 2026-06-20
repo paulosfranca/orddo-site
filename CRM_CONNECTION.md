@@ -104,6 +104,23 @@ Campos que o webhook deve preencher:
 
 ### Opção B - Cloudflare Worker/Vercel/Firebase
 
+Template pronto:
+
+```text
+webhook/cloudflare-worker.js
+```
+
+Esse arquivo já cria registro na base MVP `app7hsjUV9mUTiK1P`, tabela `01_Inbound`.
+
+Para Cloudflare Worker:
+
+1. criar um Worker;
+2. copiar o conteúdo de `webhook/cloudflare-worker.js`;
+3. configurar o secret `AIRTABLE_TOKEN` no Worker;
+4. publicar;
+5. copiar a URL pública do Worker;
+6. colar a URL em `data-endpoint` no `index.html`.
+
 Criar uma função HTTP que:
 
 1. recebe o JSON do site;
@@ -118,4 +135,3 @@ Criar uma função HTTP que:
 - O webhook deve aceitar apenas `POST`.
 - O webhook deve validar campos obrigatórios.
 - O formulário público não coleta CPF, documento pessoal, dados bancários ou uploads.
-
