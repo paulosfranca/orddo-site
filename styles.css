@@ -5575,7 +5575,7 @@ body.legal-page .site-header.is-scrolled .nav-toggle span:not(.sr-only) {
   }
 }
 
-/* ── Ajuste final v192: dash mobile centralizado e sem moldura externa ── */
+/* ── Ajuste final v193: dash mobile centralizado e menu legivel ── */
 @media (max-width: 760px) {
   body:has(.hero-generative-page):not(.proposal-sober) .showcase {
     overflow: hidden;
@@ -5584,11 +5584,12 @@ body.legal-page .site-header.is-scrolled .nav-toggle span:not(.sr-only) {
   body:has(.hero-generative-page):not(.proposal-sober) .media-panel {
     left: auto;
     display: flex;
+    align-items: center;
     justify-content: center;
     width: 100%;
     max-width: 100%;
     margin: 0 auto;
-    padding: 0 clamp(18px, 5.4vw, 24px) 52px;
+    padding: clamp(26px, 7vw, 34px) clamp(18px, 5.4vw, 24px);
     background: transparent;
     box-shadow: none;
   }
@@ -5623,5 +5624,23 @@ body.legal-page .site-header.is-scrolled .nav-toggle span:not(.sr-only) {
   body:has(.hero-generative-page):not(.proposal-sober) .mobile-dashboard {
     width: 100%;
     margin: 0 auto;
+  }
+
+  body:has(.hero-generative-page):not(.proposal-sober) .site-header .nav-links.is-open a::after,
+  body.legal-page .site-header .nav-links.is-open a::after {
+    content: attr(data-content);
+    position: static;
+    inset: auto;
+    display: block;
+    width: auto;
+    height: auto;
+    transform: none;
+    border-radius: 0;
+    opacity: 1;
+    background: transparent;
+    box-shadow: none;
+    font-size: 0.7rem;
+    line-height: 1.25;
+    color: rgba(255, 248, 234, 0.62);
   }
 }
