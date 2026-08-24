@@ -5397,7 +5397,7 @@ body.legal-page .footer-links a:focus-visible {
   }
 }
 
-/* ── Ajuste final v189: hamburguer legivel e palco desktop compacto ── */
+/* ── Ajuste final v190: menu legivel e transicao suave do dash ── */
 .nav-toggle {
   position: relative;
   align-items: center;
@@ -5503,24 +5503,49 @@ body.legal-page .site-header.is-scrolled .nav-toggle span:not(.sr-only) {
 
   .nav-links.is-open a::after {
     content: attr(data-content);
+    position: static;
+    inset: auto;
     display: block;
+    width: auto;
+    height: auto;
+    transform: none;
+    border-radius: 0;
+    opacity: 1;
+    background: transparent;
     font-size: 0.7rem;
     line-height: 1.25;
-    color: rgba(255, 248, 234, 0.54);
+    color: rgba(255, 248, 234, 0.62);
   }
 }
 
 @media (min-width: 761px) {
   body:has(.hero-generative-page):not(.proposal-sober) .showcase {
-    padding-bottom: clamp(30px, 4vw, 54px);
+    padding-bottom: clamp(40px, 4.8vw, 64px);
+    background:
+      radial-gradient(82% 58% at 50% 6%, rgba(122, 88, 255, 0.18), transparent 64%),
+      radial-gradient(76% 60% at 50% 49%, rgba(106, 32, 50, 0.22), transparent 68%),
+      linear-gradient(180deg, #160016 0%, #211236 24%, #12080f 45%, #0b0608 72%, #17091e 100%);
   }
 
   body:has(.hero-generative-page):not(.proposal-sober) .media-panel {
-    padding-bottom: clamp(12px, 2vw, 28px);
+    margin-top: clamp(6px, 1vw, 16px);
+    padding-top: clamp(28px, 4vw, 52px);
+    padding-bottom: clamp(30px, 4vw, 52px);
+    background:
+      linear-gradient(180deg, rgba(33, 18, 54, 0), rgba(8, 5, 6, 0.42) 18%, rgba(8, 5, 6, 0.68) 50%, rgba(32, 11, 34, 0.28) 84%, rgba(32, 11, 54, 0)),
+      radial-gradient(66% 72% at 50% 44%, rgba(217, 189, 131, 0.055), transparent 70%);
+  }
+
+  body:has(.hero-generative-page):not(.proposal-sober) .media-panel::after {
+    bottom: 10px;
+    height: 220px;
+    opacity: 0.12;
+    background: radial-gradient(ellipse, rgba(217, 189, 131, 0.14), rgba(106, 32, 50, 0.16) 48%, transparent 74%);
+    filter: blur(62px);
   }
 
   body:has(.hero-generative-page):not(.proposal-sober) .demo.intelligence-demo {
-    min-height: clamp(420px, 40vw, 540px);
+    min-height: clamp(460px, 43vw, 570px);
   }
 
   body:has(.hero-generative-page):not(.proposal-sober) .intel-stage,
@@ -5529,6 +5554,9 @@ body.legal-page .site-header.is-scrolled .nav-toggle span:not(.sr-only) {
   }
 
   body:has(.hero-generative-page):not(.proposal-sober) .section-breath {
-    padding-top: clamp(44px, 5vw, 62px);
+    margin-top: -1px;
+    padding-top: clamp(50px, 5.8vw, 72px);
+    background:
+      linear-gradient(180deg, #17091e 0%, #160016 100%);
   }
 }
