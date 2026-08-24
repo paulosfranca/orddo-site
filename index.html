@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800;900&family=Space+Grotesk:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=185">
+    <link rel="stylesheet" href="styles.css?v=186">
   </head>
   <body>
     <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -86,16 +86,29 @@
                       <div><strong>14,8k</strong><span>Ativos</span></div>
                       <div><strong>416</strong><span>Em análise</span></div>
                       <div><strong>R$ 82M</strong><span>Carteira</span></div>
+                      <div class="md-kpi-score"><strong>87</strong><span>Score de prioridade</span></div>
                     </div>
-                    <div class="md-chart">
-                      <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-                      <i></i>
-                    </div>
-                    <div class="md-priority">
-                      <span>Score de prioridade</span>
-                      <strong>87</strong>
-                      <div><i></i></div>
-                      <b>Prioridade alta</b>
+                    <div class="md-chart" aria-hidden="true">
+                      <svg viewBox="0 0 320 132" role="img" aria-label="Evolução da carteira">
+                        <defs>
+                          <linearGradient id="mdChartArea" x1="0" x2="0" y1="0" y2="1">
+                            <stop offset="0%" stop-color="#d9bd83" stop-opacity=".28"></stop>
+                            <stop offset="100%" stop-color="#d9bd83" stop-opacity=".035"></stop>
+                          </linearGradient>
+                          <linearGradient id="mdChartLine" x1="0" x2="1" y1="0" y2="0">
+                            <stop offset="0%" stop-color="#fff8ea" stop-opacity=".5"></stop>
+                            <stop offset="52%" stop-color="#d9bd83"></stop>
+                            <stop offset="100%" stop-color="#6a2032"></stop>
+                          </linearGradient>
+                        </defs>
+                        <path class="md-area" d="M0 92 C34 84 52 70 80 76 C112 84 126 48 154 56 C188 66 196 28 224 34 C252 40 264 66 288 54 C304 46 312 42 320 38 L320 132 L0 132 Z"></path>
+                        <path class="md-line" d="M0 92 C34 84 52 70 80 76 C112 84 126 48 154 56 C188 66 196 28 224 34 C252 40 264 66 288 54 C304 46 312 42 320 38"></path>
+                        <circle class="md-hot" cx="224" cy="34" r="5"></circle>
+                      </svg>
+                      <div class="md-chart-axis">
+                        <span>D-30</span>
+                        <span>Hoje</span>
+                      </div>
                     </div>
                   </div>
                   <div class="cinema-grain" aria-hidden="true"></div>
@@ -233,6 +246,6 @@
       </div>
     </footer>
 
-    <script src="script.js?v=185"></script>
+    <script src="script.js?v=186"></script>
   </body>
 </html>
