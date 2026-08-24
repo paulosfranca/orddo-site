@@ -1558,11 +1558,11 @@ function initIntelCanvas(canvas, onStageChange) {
   }
 
   function drawInstitutionalDashboard(time, mobile) {
-    const panelW = mobile ? width * 0.90 : Math.min(width * 0.88, 1100);
-    const panelH = mobile ? Math.min(height * 0.80, 650) : Math.min(height * 0.84, 560);
+    const panelW = mobile ? width * 0.92 : Math.min(width * 0.88, 1100);
+    const panelH = mobile ? Math.min(height * 0.86, 520) : Math.min(height * 0.84, 560);
     const panelX = (width - panelW) / 2;
-    const panelY = mobile ? height * 0.10 : height * 0.07;
-    const pad = mobile ? 18 : 34;
+    const panelY = mobile ? height * 0.07 : height * 0.07;
+    const pad = mobile ? Math.max(14, width * 0.04) : 34;
 
     ctx.save();
     roundedRect(panelX, panelY, panelW, panelH, mobile ? 18 : 24);
@@ -1585,11 +1585,12 @@ function initIntelCanvas(canvas, onStageChange) {
     ctx.lineTo(panelX + panelW - pad, panelY + (mobile ? 66 : 78));
     ctx.stroke();
 
-    const metricY = panelY + (mobile ? 92 : 116);
+    const metricY = panelY + (mobile ? 74 : 116);
     if (mobile) {
+      const colW = (panelW - pad * 2) / 2;
       drawDashboardMetric(panelX + pad, metricY, "Ativos", "14,8k", true, mobile);
-      drawDashboardMetric(panelX + panelW * 0.45, metricY, "Em análise", "416", false, mobile);
-      drawDashboardMetric(panelX + pad, metricY + 56, "Valor da carteira", "R$ 82M", false, mobile);
+      drawDashboardMetric(panelX + pad + colW, metricY, "Em análise", "416", false, mobile);
+      drawDashboardMetric(panelX + pad, metricY + 48, "Carteira", "R$ 82M", false, mobile);
     } else {
       const metricGap = panelW * 0.22;
       drawDashboardMetric(panelX + pad, metricY, "Ativos monitorados", "14,8k", true, mobile);
@@ -1598,9 +1599,9 @@ function initIntelCanvas(canvas, onStageChange) {
     }
 
     const chartX = panelX + pad;
-    const chartY = panelY + (mobile ? 210 : 155);
+    const chartY = panelY + (mobile ? 166 : 155);
     const chartW = mobile ? panelW - pad * 2 : panelW * 0.58;
-    const chartH = mobile ? panelH * 0.22 : panelH * 0.30;
+    const chartH = mobile ? Math.min(panelH * 0.22, 88) : panelH * 0.30;
     drawDashboardChart(chartX, chartY, chartW, chartH, time, mobile);
 
     ctx.font = `600 ${mobile ? 8 : 10}px 'Space Grotesk', sans-serif`;
@@ -1611,8 +1612,9 @@ function initIntelCanvas(canvas, onStageChange) {
     ctx.textAlign = "left";
 
     if (mobile) {
-      const cardY = chartY + chartH + 46;
-      drawPriorityCard(panelX + pad, cardY, panelW - pad * 2, Math.min(panelH * 0.22, 132), time, mobile);
+      const cardY = chartY + chartH + 34;
+      const cardH = clamp(panelY + panelH - pad - cardY, 76, 116);
+      drawPriorityCard(panelX + pad, cardY, panelW - pad * 2, cardH, time, mobile);
     } else {
       const cardX = panelX + panelW * 0.70;
       const cardY = chartY;
@@ -2629,7 +2631,7 @@ leadForm?.addEventListener("submit", (event) => {
   );
 
   feedback.textContent =
-    "Perfeito. Abrindo o envio por e-mail com os dados informados.";
+    "Perfeito. Abrindo seu e-mail para enviar a mensagem à OrddO.";
   feedback.classList.remove("is-error");
 
   window.location.href = `mailto:contato@orddo.com.br?subject=${subject}&body=${body}`;

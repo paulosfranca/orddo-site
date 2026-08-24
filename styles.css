@@ -5211,3 +5211,54 @@ body.legal-page .footer-links a:focus-visible {
     grid-template-columns: 1fr;
   }
 }
+
+/* ── Ajuste final v184: dash responsivo no mobile ────────────── */
+@media (max-width: 760px) {
+  body:has(.hero-generative-page):not(.proposal-sober) .media-panel {
+    left: auto;
+    width: 100%;
+    margin-left: 0;
+    padding: 0 clamp(16px, 5vw, 22px) 52px;
+    box-sizing: border-box;
+  }
+
+  body:has(.hero-generative-page):not(.proposal-sober) .media-panel::before,
+  body:has(.hero-generative-page):not(.proposal-sober) .media-panel::after {
+    display: none;
+  }
+
+  body:has(.hero-generative-page):not(.proposal-sober) .demo.intelligence-demo {
+    min-height: 0 !important;
+    border-radius: 20px;
+    transform: none;
+    animation: none;
+    box-shadow: 0 26px 68px rgba(0, 0, 0, 0.24);
+  }
+
+  body:has(.hero-generative-page):not(.proposal-sober) .intel-stage {
+    display: block;
+    min-height: 0 !important;
+    padding: 0 !important;
+  }
+
+  body:has(.hero-generative-page):not(.proposal-sober) .intel-board.intel-cinema {
+    min-height: 0 !important;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    border-radius: 18px;
+  }
+
+  body:has(.hero-generative-page):not(.proposal-sober) .intel-board.intel-cinema::before {
+    opacity: 0.34;
+  }
+
+  body:has(.hero-generative-page):not(.proposal-sober) .cinema-grain {
+    opacity: 0.22;
+  }
+}
+
+@media (max-width: 480px) {
+  body:has(.hero-generative-page):not(.proposal-sober) .intel-board.intel-cinema {
+    aspect-ratio: 3 / 4;
+  }
+}
