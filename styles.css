@@ -5574,3 +5574,54 @@ body.legal-page .site-header.is-scrolled .nav-toggle span:not(.sr-only) {
     background: linear-gradient(90deg, rgba(255, 248, 234, 0.34), rgba(217, 189, 131, 0.16), transparent);
   }
 }
+
+/* ── Ajuste final v192: dash mobile centralizado e sem moldura externa ── */
+@media (max-width: 760px) {
+  body:has(.hero-generative-page):not(.proposal-sober) .showcase {
+    overflow: hidden;
+  }
+
+  body:has(.hero-generative-page):not(.proposal-sober) .media-panel {
+    left: auto;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 clamp(18px, 5.4vw, 24px) 52px;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  body:has(.hero-generative-page):not(.proposal-sober) .media-panel::before,
+  body:has(.hero-generative-page):not(.proposal-sober) .media-panel::after {
+    display: none;
+  }
+
+  body:has(.hero-generative-page):not(.proposal-sober) .demo.intelligence-demo {
+    width: min(100%, 430px);
+    margin: 0 auto;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  body:has(.hero-generative-page):not(.proposal-sober) .intel-stage {
+    width: 100%;
+  }
+
+  body:has(.hero-generative-page):not(.proposal-sober) .intel-board.intel-cinema {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    border: 0;
+    outline: 0;
+    box-shadow: 0 24px 58px rgba(0, 0, 0, 0.24);
+  }
+
+  body:has(.hero-generative-page):not(.proposal-sober) .mobile-dashboard {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
