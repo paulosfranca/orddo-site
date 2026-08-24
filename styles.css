@@ -4978,6 +4978,69 @@ body:has(.hero-generative-page):not(.proposal-sober) .lead-form {
     linear-gradient(145deg, rgba(255, 248, 234, 0.082), rgba(255, 248, 234, 0.034));
 }
 
+/* ── Ajuste final v180: marca discreta e respiro do logo ─────── */
+body:has(.hero-generative-page):not(.proposal-sober) .section-breath::after {
+  right: max(46px, calc((100vw - var(--container)) / 2 + 34px));
+  width: min(340px, 30vw);
+  opacity: 0.72;
+  background: linear-gradient(90deg, rgba(255, 248, 234, 0.1), rgba(245, 198, 106, 0.3), rgba(255, 248, 234, 0.12));
+  -webkit-mask: url("logo-mask.png") no-repeat center / calc(100% - 34px) auto;
+  mask: url("logo-mask.png") no-repeat center / calc(100% - 34px) auto;
+}
+
+body:has(.hero-generative-page):not(.proposal-sober) .services,
+body:has(.hero-generative-page):not(.proposal-sober) .statement-center {
+  position: relative;
+  overflow: hidden;
+}
+
+body:has(.hero-generative-page):not(.proposal-sober) .services > .container,
+body:has(.hero-generative-page):not(.proposal-sober) .statement-center > .container {
+  position: relative;
+  z-index: 1;
+}
+
+body:has(.hero-generative-page):not(.proposal-sober) .services::after,
+body:has(.hero-generative-page):not(.proposal-sober) .statement-center::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  background: rgba(255, 248, 234, 0.045);
+  -webkit-mask: url("logo-mask.png") no-repeat center / contain;
+  mask: url("logo-mask.png") no-repeat center / contain;
+}
+
+body:has(.hero-generative-page):not(.proposal-sober) .services::after {
+  right: max(24px, calc((100vw - var(--container)) / 2));
+  bottom: 26px;
+  width: min(220px, 22vw);
+  aspect-ratio: 684 / 182;
+  opacity: 0.58;
+}
+
+body:has(.hero-generative-page):not(.proposal-sober) .statement-center::after {
+  right: max(22px, calc((100vw - var(--container)) / 2 - 8px));
+  top: 78px;
+  width: min(300px, 28vw);
+  aspect-ratio: 684 / 182;
+  opacity: 0.42;
+  transform: rotate(-2deg);
+}
+
+@media (max-width: 760px) {
+  body:has(.hero-generative-page):not(.proposal-sober) .section-breath::after {
+    right: 18px;
+    width: min(210px, 54vw);
+    opacity: 0.38;
+  }
+
+  body:has(.hero-generative-page):not(.proposal-sober) .services::after,
+  body:has(.hero-generative-page):not(.proposal-sober) .statement-center::after {
+    opacity: 0.24;
+    width: min(190px, 52vw);
+  }
+}
+
 /* ── Páginas legais: mesma direção visual do site principal ───── */
 body.legal-page {
   background:
