@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="214" height="72" viewBox="0 0 214 72" role="img" aria-labelledby="title">
+  <title id="title">Insper Hub</title>
+  <g fill="none" fill-rule="evenodd">
+    <text x="4" y="39" fill="#F4EEE7" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="700">Insper</text>
+    <path d="M112 16h2v40h-2z" fill="#D9B66A" opacity=".75"/>
+    <text x="132" y="38" fill="#F4EEE7" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700">Hub</text>
+    <text x="132" y="54" fill="#B8ADA2" font-family="Arial, Helvetica, sans-serif" font-size="10" font-weight="700">Inovacao</text>
+  </g>
+</svg>

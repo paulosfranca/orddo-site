@@ -3,296 +3,187 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>OrddO | Seu processo pode virar dinheiro antes</title>
-    <meta
-      name="description"
-      content="Envie o número do seu processo. A OrddO analisa gratuitamente e, se for elegível, pode fazer uma proposta para comprar seu crédito judicial."
-    >
-    <meta name="theme-color" content="#071f1a">
-    <meta property="og:title" content="OrddO | Seu processo pode virar dinheiro antes">
-    <meta
-      property="og:description"
-      content="Análise inicial gratuita para saber se a OrddO pode comprar seu crédito judicial."
-    >
+    <title>OrddO | Inteligência jurídica</title>
+    <meta name="description" content="OrddO é uma empresa de inteligência jurídica. Estruturamos dados judiciais e estimamos cenários para apoiar decisões de alocação por ativo e carteira.">
+    <meta name="theme-color" content="#f7f8f6">
+    <meta property="og:title" content="OrddO | Inteligência jurídica">
+    <meta property="og:description" content="A inteligência por trás de cada decisão sobre ativos judiciais.">
     <meta property="og:type" content="website">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800;900&family=Space+Grotesk:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=179">
   </head>
   <body>
     <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
     <header class="site-header" data-header>
       <nav class="nav" aria-label="Navegação principal">
-        <a class="brand" href="#topo" aria-label="OrddO, início">
-          <span class="brand-mark" aria-hidden="true">O</span>
-          <span class="brand-name">OrddO</span>
-        </a>
+        <a class="brand brand-nav" href="#topo" aria-label="OrddO, início"><img class="logo-img" src="logo-mask.png" srcset="logo-mask.png 1x, logo-mask@4x.png 4x" alt="" aria-hidden="true" decoding="async"></a>
 
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" data-nav-toggle>
-          <span></span>
-          <span></span>
-          <span></span>
+          <span></span><span></span><span></span>
           <span class="sr-only">Abrir menu</span>
         </button>
 
         <div class="nav-links" id="menu-principal" data-nav-menu>
-          <a href="#como-funciona">Como funciona</a>
-          <a href="#advogados">Advogados</a>
-          <a href="#faq">FAQ</a>
+          <a href="#produto" data-content="Inteligência para ativos judiciais">O que fazemos</a>
+          <a href="#metodo" data-content="Da evidência ao cenário">Método</a>
+          <a href="#para-quem" data-content="Fundos, originadores e jurídicos">Para quem</a>
+          <a href="#contato" data-content="Conversa confidencial">Contato</a>
         </div>
 
-        <a class="nav-cta" href="#analise">Ver meu processo</a>
       </nav>
     </header>
 
     <main id="conteudo">
 
       <!-- ── HERO ─────────────────────────────────────── -->
-      <section class="hero" id="topo">
-        <div class="hero-bg" aria-hidden="true"></div>
+      <section class="hero hero-generative-page" id="topo">
+        <div class="hero-generative" aria-hidden="true">
+          <canvas id="trianglify-canvas" class="trianglify-canvas" data-trianglify></canvas>
+          <canvas id="nova-canvas" class="nova-canvas" data-nova></canvas>
+          <canvas id="decision-canvas" class="decision-canvas" data-decision-hero></canvas>
+        </div>
+        <div class="container hero-content">
+          <p class="hero-eyebrow">Inteligência jurídica para ativos judiciais</p>
+          <h1>Transforme processos judiciais em decisões de alocação.</h1>
+          <p class="hero-subtitle">Estruturamos documentos, sinais processuais e cenários de carteira para quem precisa decidir onde priorizar capital, risco e execução.</p>
+          <div class="hero-actions" aria-label="Ações principais">
+            <a class="button button-primary" href="#contato">Falar com a OrddO</a>
+          </div>
+        </div>
+        <div class="hero-foot">
+          <a class="scroll-cue" href="#manifesto" aria-label="Rolar para baixo">↓</a>
+        </div>
+      </section>
+
+      <!-- ── STATEMENT (intro) ────────────────────────── -->
+      <section class="statement" id="manifesto">
         <div class="container">
-          <div class="hero-inner hero-enter">
-            <p class="eyebrow">Processo judicial para receber</p>
-            <h1>Tem dinheiro preso em um processo?</h1>
-            <p class="hero-subtitle">
-              A gente olha o seu processo gratuitamente e explica se a OrddO pode fazer
-              uma proposta para comprar seu crédito judicial.
-            </p>
-            <div class="hero-actions">
-              <a class="button button-primary" href="#analise">Quero analisar meu processo</a>
-              <a class="button button-secondary" href="#como-funciona">Entender como funciona</a>
-            </div>
-            <p class="hero-note">Gratuito para analisar &middot; Sem compromisso &middot; Sem CPF nesta etapa</p>
-          </div>
+          <h2 class="reveal">Transformamos milhões de documentos judiciais <span class="dim">em insights estratégicos.</span></h2>
         </div>
       </section>
 
-      <!-- ── TRUST STRIP ───────────────────────────────── -->
-      <section class="trust-strip" aria-label="Princípios operacionais">
-        <div class="container trust-grid">
-          <div>
-            <strong>Você envia o processo</strong>
-            <span>Com o número CNJ, já conseguimos começar.</span>
-          </div>
-          <div>
-            <strong>A gente faz a triagem</strong>
-            <span>Olhamos fase, valor, riscos e próximos documentos.</span>
-          </div>
-          <div>
-            <strong>Você decide se quer seguir</strong>
-            <span>Se houver proposta, ela é apresentada sem obrigação de aceite.</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- ── COMO FUNCIONA ──────────────────────────────── -->
-      <section class="section" id="como-funciona">
+      <!-- ── PRIORIZAÇÃO (processo genérico, demo ao vivo) ─ -->
+      <section class="showcase" id="produto">
         <div class="container">
-          <div class="section-heading centered reveal">
-            <p class="eyebrow">Como funciona</p>
-            <h2>Veja como é simples.</h2>
-            <p>
-              Primeiro entendemos o processo. Depois, se ele tiver perfil para compra,
-              seguimos com as validações necessárias.
-            </p>
+          <div class="show-head reveal">
+            <h2>Permitimos que a gestão enxergue <span class="dim">onde, como e quando priorizar recursos.</span></h2>
           </div>
 
-          <div class="steps-grid">
-            <article class="step-card reveal">
-              <span class="step-num">01</span>
-              <h3>Envie o processo</h3>
-              <p>Informe o número CNJ e seus dados de contato. Sem CPF nesta etapa.</p>
-            </article>
-            <article class="step-card reveal">
-              <span class="step-num">02</span>
-              <h3>A gente analisa</h3>
-              <p>Vemos se o crédito tem perfil para uma proposta: fase, valor e riscos.</p>
-            </article>
-            <article class="step-card reveal">
-              <span class="step-num">03</span>
-              <h3>Você recebe uma resposta</h3>
-              <p>Se fizer sentido, explicamos os próximos passos e os documentos necessários.</p>
-            </article>
-            <article class="step-card reveal">
-              <span class="step-num">04</span>
-              <h3>Se avançar, formalizamos</h3>
-              <p>A compra é feita por contrato de cessão, com pagamento após as aprovações.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- ── PARA ADVOGADOS ─────────────────────────────── -->
-      <section class="section" id="advogados">
-        <div class="container lawyer-panel reveal">
-          <div>
-            <p class="eyebrow">Advogados</p>
-            <h2>Seu cliente quer entender se pode receber antes?</h2>
-            <p>
-              A OrddO pode avaliar a compra do crédito judicial do seu cliente de forma
-              simples, transparente e sem interferir na condução do processo.
-            </p>
-            <a class="button button-primary" href="#analise">Enviar um caso para análise</a>
-          </div>
-
-          <div class="lawyer-list">
-            <div>
-              <strong>Você segue à frente</strong>
-              <span>O advogado continua sendo a referência do cliente no processo.</span>
-            </div>
-            <div>
-              <strong>Análise clara</strong>
-              <span>Se houver caminho para proposta, explicamos valores e próximos passos.</span>
-            </div>
-            <div>
-              <strong>Sem substituir sua atuação</strong>
-              <span>A OrddO não presta consultoria jurídica nem assume a condução da causa.</span>
+          <div class="media-panel reveal" data-parallax-panel>
+            <div class="demo intelligence-demo" data-demo>
+              <div class="intel-stage" aria-label="Painel executivo de priorização de carteira">
+                <div class="intel-board intel-cinema">
+                  <canvas class="intel-canvas" data-intel-canvas aria-hidden="true"></canvas>
+                  <div class="cinema-grain" aria-hidden="true"></div>
+                  <div class="cinema-caption" aria-live="polite">
+                    <b data-flow-label>Visão executiva</b>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ── FAQ ───────────────────────────────────────── -->
-      <section class="section section-muted" id="faq">
-        <div class="container faq-grid">
-          <div class="section-heading reveal">
-            <p class="eyebrow">Dúvidas comuns</p>
-            <h2>Antes de enviar seu processo.</h2>
-          </div>
+      <!-- ── RESPIRO EDITORIAL ────────────────────────── -->
+      <section class="section-breath" aria-label="Síntese do processo">
+        <div class="container">
+          <p class="reveal">Da evidência processual <span>à decisão de alocação.</span></p>
+        </div>
+      </section>
 
-          <div class="faq-list">
-            <details class="faq-item reveal" open>
-              <summary>A OrddO vira minha advogada?</summary>
-              <p>
-                Não. A OrddO não é escritório de advocacia e não presta consultoria jurídica.
-                Nosso trabalho é avaliar se podemos comprar o seu crédito judicial.
-              </p>
-            </details>
-            <details class="faq-item reveal">
-              <summary>Preciso pagar para analisar?</summary>
-              <p>
-                Sim. Sem custo e sem obrigação de aceitar qualquer proposta.
-              </p>
-            </details>
-            <details class="faq-item reveal">
-              <summary>Todo processo é aprovado?</summary>
-              <p>
-                Não. Cada processo passa por análise. Podemos recusar casos que não tenham
-                perfil jurídico, documental, operacional ou de risco.
-              </p>
-            </details>
-            <details class="faq-item reveal">
-              <summary>Como vocês calculam a proposta?</summary>
-              <p>
-                Consideramos valor estimado, fase do processo, devedor, prazo esperado e
-                riscos. A proposta depende de documentos, validações e aprovação interna.
-              </p>
-            </details>
-            <details class="faq-item reveal">
-              <summary>E o advogado do processo?</summary>
-              <p>
-                A relação com o advogado é preservada. A OrddO não substitui o advogado e
-                não interfere na estratégia processual.
-              </p>
-            </details>
-            <details class="faq-item reveal">
-              <summary>Se aprovado, quem recebe?</summary>
-              <p>
-                O pagamento é feito ao titular do crédito, em conta de mesma titularidade,
-                após validações, contrato assinado e aprovações necessárias.
-              </p>
-            </details>
+      <!-- ── SERVIÇOS / MÉTODO (lista Fantasy) ─────────── -->
+      <section class="services" id="metodo">
+        <div class="container">
+          <span class="label reveal">Como trabalhamos</span>
+          <ol class="svc-list" data-spotlight>
+            <li class="svc reveal"><h3>Coleta massiva</h3><p>Capturamos milhões de publicações e documentos judiciais por dia.</p></li>
+            <li class="svc reveal"><h3>Sistematização</h3><p>Estruturamos dados dispersos em uma base consistente, comparável e sempre atualizada.</p></li>
+            <li class="svc reveal"><h3>Modelagem proprietária</h3><p>Modelos estimam cenários para cada ativo e carteira.</p></li>
+            <li class="svc reveal"><h3>Insights</h3><p>Entregamos a leitura pronta para quem toma a decisão de alocação.</p></li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ── MÉTRICAS ──────────────────────────────────── -->
+      <section class="metrics-section" aria-label="Capacidades da OrddO">
+        <div class="container metrics-grid">
+          <div class="metric reveal"><strong>+10 anos</strong><span class="metric-label">de experiência em IA em empresas líderes</span></div>
+          <div class="metric reveal"><strong>Milhões<span>/dia</span></strong><span class="metric-label">de documentos processados</span></div>
+          <div class="metric reveal"><strong>Cenários</strong><span class="metric-label">por processo jurídico e carteira</span></div>
+          <div class="metric reveal"><strong>Governança</strong><span class="metric-label">para decisões com escopo e critérios claros</span></div>
+        </div>
+      </section>
+
+      <!-- ── PARCEIROS ─────────────────────────────────── -->
+      <section class="partners" aria-label="Parceiros institucionais">
+        <div class="container partners-panel">
+          <span class="partners-eyebrow">Parceiros</span>
+          <div class="partner-logos" aria-label="CLOC, AB2L e Insper Hub">
+            <div class="partner-logo partner-logo-cloc"><img src="partner-cloc-mark.png" alt="CLOC" loading="lazy" decoding="async"></div>
+            <div class="partner-logo partner-logo-ab2l"><img src="partner-ab2l-mark.svg" alt="AB2L" loading="lazy" decoding="async"></div>
+            <div class="partner-logo partner-logo-insper"><img src="partner-insper-hub.svg" alt="Insper Hub" loading="lazy" decoding="async"></div>
           </div>
         </div>
       </section>
 
-      <!-- ── FORMULÁRIO ─────────────────────────────────── -->
-      <section class="section form-section" id="analise">
-        <div class="container form-grid">
-          <div class="form-copy reveal">
-            <p class="eyebrow">Comece por aqui</p>
-            <h2>Envie o número do seu processo.</h2>
-            <p>
-              É gratuito e sem compromisso. Preencha os dados abaixo e a gente faz a
-              primeira triagem.
-            </p>
-            <div class="privacy-note">
-              <strong>Sem CPF ou dados bancários nesta etapa.</strong>
-              <span>
-                Documentos pessoais são solicitados apenas quando houver interesse real
-                e ambiente seguro de validação.
-              </span>
-            </div>
+      <!-- ── PARA QUEM ─────────────────────────────────── -->
+      <section class="statement statement-center" id="para-quem">
+        <div class="container">
+          <h2 class="reveal">A inteligência jurídica escolhida por quem <span class="dim">aloca capital em ativos judiciais.</span></h2>
+        </div>
+        <div class="container gallery">
+          <article class="gcard reveal"><h3>Fundos e securitizadoras</h3><p>Precificação e due diligence de carteiras.</p></article>
+          <article class="gcard reveal"><h3>Escritórios e jurídicos</h3><p>Cenários e priorização de carteiras.</p></article>
+          <article class="gcard reveal"><h3>Originadores e compradores</h3><p>Avaliação antes da aquisição.</p></article>
+          <article class="gcard reveal"><h3>Gestores de recuperação</h3><p>Foco onde o retorno é maior.</p></article>
+        </div>
+      </section>
+
+      <!-- ── CONTATO ───────────────────────────────────── -->
+      <section class="contact" id="contato">
+        <div class="container contact-grid">
+          <div class="contact-copy reveal">
+            <span class="label">Contato</span>
+            <h2>Vamos conversar.</h2>
+            <p>Apresente sua carteira ou operação. Retornamos com o formato de análise mais adequado e os próximos passos.</p>
+            <p class="contact-assurance">Confidencialidade, escopo delimitado e critérios de segurança definidos antes de qualquer integração.</p>
+            <ul class="contact-trust" aria-label="Compromissos de contato">
+              <li>Conversa inicial sem exposição de dados sensíveis</li>
+              <li>Escopo técnico e jurídico delimitado por carteira</li>
+              <li>Próximos passos definidos com governança clara</li>
+            </ul>
           </div>
 
-          <form class="lead-form reveal" data-lead-form data-endpoint="https://orddo-crm-inbound.orddo.workers.dev" novalidate>
-            <div class="form-row">
-              <label for="nome">Nome</label>
-              <input id="nome" name="nome" type="text" autocomplete="name" required>
-            </div>
-
+          <form class="lead-form reveal" data-lead-form novalidate>
+            <div class="form-row"><label for="nome">Nome</label><input id="nome" name="nome" type="text" autocomplete="name" required></div>
             <div class="form-row two-columns">
-              <div>
-                <label for="email">E-mail</label>
-                <input id="email" name="email" type="email" autocomplete="email" required>
-              </div>
-              <div>
-                <label for="telefone">Telefone</label>
-                <input id="telefone" name="telefone" type="tel" autocomplete="tel" placeholder="(11) 99999-9999" required>
-              </div>
+              <div><label for="empresa">Empresa</label><input id="empresa" name="empresa" type="text" autocomplete="organization" required></div>
+              <div><label for="cargo">Cargo</label><input id="cargo" name="cargo" type="text" autocomplete="organization-title"></div>
             </div>
-
+            <div class="form-row two-columns">
+              <div><label for="email">E-mail corporativo</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+              <div><label for="telefone">Telefone</label><input id="telefone" name="telefone" type="tel" autocomplete="tel" required></div>
+            </div>
             <div class="form-row">
-              <label for="perfil">Você é</label>
+              <label for="perfil">Tipo de organização</label>
               <select id="perfil" name="perfil" required>
                 <option value="">Selecione</option>
-                <option>Titular do crédito</option>
-                <option>Advogado(a)</option>
-                <option>Representante autorizado</option>
+                <option>Fundo / Securitizadora</option>
+                <option>Escritório de advocacia</option>
+                <option>Departamento jurídico</option>
+                <option>Originador / Comprador de carteira</option>
+                <option>Gestora de recuperação</option>
+                <option>Outro</option>
               </select>
             </div>
-
-            <div class="form-row two-columns">
-              <div>
-                <label for="processo">Número do processo</label>
-                <input id="processo" name="processo" type="text" inputmode="numeric" pattern="\d{7}-\d{2}\.\d{4}\.\d\.\d{2}\.\d{4}" placeholder="0000000-00.0000.0.00.0000" required>
-              </div>
-              <div>
-                <label for="tribunal">Tribunal / estado</label>
-                <input id="tribunal" name="tribunal" type="text" placeholder="Ex.: TJSP" required>
-              </div>
-            </div>
-
-            <div class="form-row two-columns">
-              <div>
-                <label for="advogado">Advogado, se houver</label>
-                <input id="advogado" name="advogado" type="text">
-              </div>
-              <div>
-                <label for="valor">Valor aproximado</label>
-                <input id="valor" name="valor" type="text" placeholder="Ex.: R$ 20.000">
-              </div>
-            </div>
-
-            <label class="checkbox-row">
-              <input type="checkbox" name="contato" required>
-              <span>Autorizo a OrddO a entrar em contato sobre esta análise.</span>
-            </label>
-
-            <label class="checkbox-row">
-              <input type="checkbox" name="privacidade" required>
-              <span>
-                Li e aceito a <a href="privacidade.html">Política de Privacidade</a> e os
-                <a href="termos.html">Termos de Uso</a>.
-              </span>
-            </label>
-
-            <button class="button button-primary form-submit" type="submit">
-              Iniciar análise gratuita
-            </button>
-
+            <div class="form-row"><label for="mensagem">O que você busca</label><textarea id="mensagem" name="mensagem" rows="3" placeholder="Ex.: precificar uma carteira, avaliar risco de um conjunto de processos, integrar inteligência à nossa operação."></textarea></div>
+            <label class="checkbox-row"><input type="checkbox" name="contato" required><span>Autorizo a OrddO a entrar em contato sobre esta solicitação.</span></label>
+            <label class="checkbox-row"><input type="checkbox" name="privacidade" required><span>Li e aceito a <a href="privacidade.html">Política de Privacidade</a> e os <a href="termos.html">Termos de Uso</a>.</span></label>
+            <button class="button button-primary form-submit" type="submit">Enviar mensagem</button>
             <p class="form-feedback" data-form-feedback role="status" aria-live="polite"></p>
           </form>
         </div>
@@ -302,38 +193,25 @@
 
     <footer class="site-footer">
       <div class="container footer-grid">
-        <div>
-          <a class="brand footer-brand" href="#topo" aria-label="OrddO, início">
-            <span class="brand-mark" aria-hidden="true">O</span>
-            <span class="brand-name">OrddO</span>
-          </a>
-          <p>Tecnologia e aquisição de direitos creditórios judiciais.</p>
+        <div class="footer-brand-col">
+          <a class="brand brand-footer" href="#topo" aria-label="OrddO, início"><img class="logo-img" src="logo-mask.png" srcset="logo-mask.png 1x, logo-mask@4x.png 4x" alt="" aria-hidden="true" decoding="async"></a>
+          <p>Inteligência jurídica.</p>
         </div>
-
         <div class="footer-links">
-          <a href="#como-funciona">Como funciona</a>
-          <a href="#advogados">Para advogados</a>
-          <a href="#faq">Perguntas frequentes</a>
+          <a href="#produto">O que fazemos</a>
+          <a href="#metodo">Método</a>
+          <a href="#para-quem">Para quem</a>
           <a href="privacidade.html">Política de Privacidade</a>
           <a href="termos.html">Termos de Uso</a>
           <a href="mailto:contato@orddo.com.br">contato@orddo.com.br</a>
         </div>
-
         <div class="legal-copy">
-          <p>
-            A OrddO não é escritório de advocacia e não presta consultoria jurídica. Nossa atuação
-            é avaliar e, quando aprovado, adquirir direitos creditórios judiciais por cessão,
-            nos termos dos arts. 286 e seguintes do Código Civil.
-          </p>
-          <p>
-            Toda proposta está sujeita à análise jurídica, documental, operacional e
-            aprovação interna. A análise inicial não representa promessa de compra,
-            garantia de pagamento ou recomendação jurídica.
-          </p>
+          <p>© 2026 OrddO. Todos os direitos reservados.</p>
+          <p>A OrddO é uma empresa de inteligência e tecnologia jurídica. Não presta consultoria jurídica nem representação processual e não constitui escritório de advocacia.</p>
         </div>
       </div>
     </footer>
 
-    <script src="script.js?v=fd05c62"></script>
+    <script src="script.js?v=179"></script>
   </body>
 </html>
