@@ -5397,7 +5397,7 @@ body.legal-page .footer-links a:focus-visible {
   }
 }
 
-/* ── Ajuste final v190: menu legivel e transicao suave do dash ── */
+/* ── Ajuste final v191: separador editorial mais sutil ── */
 .nav-toggle {
   position: relative;
   align-items: center;
@@ -5557,6 +5557,20 @@ body.legal-page .site-header.is-scrolled .nav-toggle span:not(.sr-only) {
     margin-top: -1px;
     padding-top: clamp(50px, 5.8vw, 72px);
     background:
-      linear-gradient(180deg, #17091e 0%, #160016 100%);
+      linear-gradient(180deg, #17091e 0%, #19051b 24%, #160016 100%);
+  }
+
+  body:has(.hero-generative-page):not(.proposal-sober) .section-breath .container {
+    padding-top: clamp(28px, 4vw, 48px);
+    border-top: 0;
+  }
+
+  body:has(.hero-generative-page):not(.proposal-sober) .section-breath p::before {
+    content: "";
+    display: block;
+    width: min(240px, 22vw);
+    height: 1px;
+    margin-bottom: clamp(26px, 3vw, 36px);
+    background: linear-gradient(90deg, rgba(255, 248, 234, 0.34), rgba(217, 189, 131, 0.16), transparent);
   }
 }
