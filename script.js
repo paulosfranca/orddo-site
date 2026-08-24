@@ -2542,7 +2542,6 @@ function initParallaxPanels() {
 const header = document.querySelector("[data-header]");
 const navToggle = document.querySelector("[data-nav-toggle]");
 const navMenu = document.querySelector("[data-nav-menu]");
-const navToggleLabel = document.querySelector("[data-nav-toggle-label]");
 const leadForm = document.querySelector("[data-lead-form]");
 const feedback = document.querySelector("[data-form-feedback]");
 
@@ -2558,7 +2557,6 @@ navToggle?.addEventListener("click", () => {
   document.body.classList.toggle("menu-open", isOpen);
   navToggle.setAttribute("aria-expanded", String(isOpen));
   navToggle.setAttribute("aria-label", isOpen ? "Fechar menu" : "Abrir menu");
-  if (navToggleLabel) navToggleLabel.textContent = isOpen ? "Fechar" : "Menu";
 });
 
 navMenu?.addEventListener("click", (event) => {
@@ -2567,7 +2565,6 @@ navMenu?.addEventListener("click", (event) => {
     document.body.classList.remove("menu-open");
     navToggle?.setAttribute("aria-expanded", "false");
     navToggle?.setAttribute("aria-label", "Abrir menu");
-    if (navToggleLabel) navToggleLabel.textContent = "Menu";
   }
 });
 
