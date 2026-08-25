@@ -2592,7 +2592,7 @@ function formValue(formData, key) {
   return String(formData.get(key) || "").trim();
 }
 
-leadForm?.addEventListener("submit", (event) => {
+leadForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   if (!leadForm.checkValidity()) {
@@ -2602,39 +2602,40 @@ leadForm?.addEventListener("submit", (event) => {
     return;
   }
 
+  const submitButton = leadForm.querySelector(".form-submit");
+  const originalLabel = submitButton?.textContent || "";
   const data = new FormData(leadForm);
-  const payload = {
-    nome: formValue(data, "nome"),
-    empresa: formValue(data, "empresa"),
-    cargo: formValue(data, "cargo") || "Não informado",
-    email: formValue(data, "email"),
-    telefone: formValue(data, "telefone"),
-    perfil: formValue(data, "perfil"),
-    mensagem: formValue(data, "mensagem") || "Não informado",
-  };
+  data.set("_subject", `Novo contato pelo site OrddO - ${formValue(data, "empresa")}`);
 
-  const subject = encodeURIComponent(`Contato B2B OrddO - ${payload.empresa}`);
-  const body = encodeURIComponent(
-    [
-      "Olá, OrddO.",
-      "",
-      "Gostaria de conversar sobre inteligência para ativos judiciais.",
-      "",
-      `Nome: ${payload.nome}`,
-      `Empresa: ${payload.empresa}`,
-      `Cargo: ${payload.cargo}`,
-      `E-mail: ${payload.email}`,
-      `Telefone: ${payload.telefone}`,
-      `Tipo de organização: ${payload.perfil}`,
-      `O que busca: ${payload.mensagem}`,
-      "",
-      "Declaro que autorizei contato sobre esta solicitação.",
-    ].join("\n")
-  );
-
-  feedback.textContent =
-    "Perfeito. Abrindo seu e-mail para enviar a mensagem à OrddO.";
+  feedback.textContent = "Enviando sua mensagem...";
   feedback.classList.remove("is-error");
 
-  window.location.href = `mailto:contato@orddo.com.br?subject=${subject}&body=${body}`;
+  if (submitButton) {
+    submitButton.disabled = true;
+    submitButton.textContent = "Enviando...";
+  }
+
+  try {
+    const response = await fetch(leadForm.action, {
+      method: "POST",
+      body: data,
+      headers: { Accept: "application/json" },
+    });
+
+    if (!response.ok) {
+      throw new Error("Form submission failed");
+    }
+
+    feedback.textContent = "Mensagem enviada. Retornaremos pelo e-mail informado.";
+    leadForm.reset();
+  } catch (error) {
+    feedback.textContent =
+      "Não conseguimos enviar agora. Escreva para contato@orddo.com.br.";
+    feedback.classList.add("is-error");
+  } finally {
+    if (submitButton) {
+      submitButton.disabled = false;
+      submitButton.textContent = originalLabel;
+    }
+  }
 });

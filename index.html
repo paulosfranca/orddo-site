@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800;900&family=Space+Grotesk:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=193">
+    <link rel="stylesheet" href="styles.css?v=194">
   </head>
   <body>
     <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
@@ -192,7 +192,12 @@
             </ul>
           </div>
 
-          <form class="lead-form reveal" action="mailto:contato@orddo.com.br" method="post" enctype="text/plain" data-lead-form novalidate>
+          <form class="lead-form reveal" action="https://formsubmit.co/ajax/contato@orddo.com.br" method="post" data-lead-form novalidate>
+            <input type="hidden" name="_subject" value="Novo contato pelo site OrddO">
+            <input type="hidden" name="_template" value="table">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_honey" value="">
+            <input type="hidden" name="_url" value="https://www.orddo.com.br/">
             <div class="form-row"><label for="nome">Nome</label><input id="nome" name="nome" type="text" autocomplete="name" required></div>
             <div class="form-row two-columns">
               <div><label for="empresa">Empresa</label><input id="empresa" name="empresa" type="text" autocomplete="organization" required></div>
@@ -246,6 +251,6 @@
       </div>
     </footer>
 
-    <script src="script.js?v=193"></script>
+    <script src="script.js?v=194"></script>
   </body>
 </html>

@@ -2181,6 +2181,7 @@ input:focus, select:focus, textarea:focus { border-color: rgba(217,189,131,0.72)
 .checkbox-row input { min-height: auto; width: 18px; height: 18px; margin-top: 2px; padding: 0; accent-color: var(--gold); }
 .checkbox-row a { color: var(--gold-2); text-decoration: underline; text-underline-offset: 3px; }
 .form-submit { width: 100%; border: 0; margin-top: 4px; }
+.form-submit:disabled { opacity: 0.66; cursor: progress; transform: none; }
 .form-feedback { min-height: 22px; margin: 0; color: var(--gold-2); font-weight: 600; font-size: 0.92rem; }
 .form-feedback.is-error { color: #e08; }
 
